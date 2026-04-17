@@ -1,8 +1,3 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
 import React, { useState, useRef, useMemo, useEffect } from 'react';
 import JSZip from 'jszip';
 import { 
@@ -715,6 +710,26 @@ export default function App() {
                   {type.label}
                 </button>
               ))}
+            </div>
+          </div>
+
+          {/* About & Support */}
+          <div className="space-y-4">
+            <label className="text-[11px] uppercase font-bold text-text-dim tracking-wider">ماذا تفعل الأداة؟</label>
+            <div className="p-4 bg-bg border border-border rounded-xl space-y-3">
+              <p className="text-[11px] text-text-dim leading-relaxed">
+                <span className="text-accent font-bold">محرك الزعابي</span> هو أقوى أداة سحابية لفحص تريقرات سيرفرات FiveM. يقوم المحرك بتفكيك ملفات ZIP واستخراج الأحداث المشبوهة (Triggers) وفك التشفير المعقد لكشف الثغرات والباكدورات.
+              </p>
+              <div className="space-y-2 pt-2">
+                <label className="text-[9px] uppercase font-bold text-text-dim/60 tracking-widest block">التشفيرات المدعومة</label>
+                <div className="flex flex-wrap gap-1.5">
+                  {['Luraph', 'MoonSec', 'Xenon', 'IronBrew', 'PS-Obf', 'Base64', 'Hex-Enc'].map(tag => (
+                    <span key={tag} className="px-1.5 py-0.5 bg-accent/5 border border-accent/20 rounded text-[9px] text-accent font-mono uppercase font-bold">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
