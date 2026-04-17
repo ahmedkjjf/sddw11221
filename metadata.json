@@ -1,0 +1,6 @@
+{
+  "name": "محرك الزعابي لفحص التريقرات",
+  "description": "A high-performance browser-based auditing tool for FiveM server resources. Scan ZIP files to discover TriggerServerEvent, TriggerClientEvent, and NetEvents, analyze implementation security, and export results.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
