@@ -408,7 +408,32 @@ export default function App() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // Site Protection Logic (Elite Protection Pack)
+    // 1. Environment Integrity Check (Anti-Download/Piracy)
+    const isAuthorized = 
+      window.location.hostname.includes('ais-dev-') || 
+      window.location.hostname.includes('ais-pre-') ||
+      window.location.hostname.includes('run.app') ||
+      window.location.hostname === 'localhost';
+
+    const isLocalFile = window.location.protocol === 'file:';
+
+    if (isLocalFile || !isAuthorized) {
+      document.body.innerHTML = `
+        <div style="background:#050505; color:#ff4444; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; font-family:sans-serif; text-align:center; padding: 20px; direction: rtl;">
+          <h1 style="font-size:60px; margin-bottom: 20px; text-shadow: 0 0 20px red; letter-spacing: -2px;">ACCESS REVOKED</h1>
+          <p style="font-size:24px; font-weight: bold; margin-bottom: 10px;">عذراً، هذا الموقع محمي من التحميل غير القانوني.</p>
+          <p style="font-size:16px; opacity:0.6; margin-bottom: 30px;">تم اكتشاف محاولة تشغيل غير مصرح بها من: ${window.location.hostname || 'Local System'}</p>
+          <div style="padding: 20px; border: 1px dashed #ff4444; border-radius: 12px; background: rgba(255,68,68,0.05);">
+             <span style="color: #6366f1; font-weight: bold; font-size: 18px;">جميع حقوق البرمجة محفوظة للزعابي</span>
+          </div>
+          <a href="https://discord.gg/uuuu" style="color:#ffffff; background: #6366f1; padding: 14px 28px; text-decoration:none; margin-top:40px; border-radius: 10px; font-weight:bold; transition: transform 0.2s;">تواصل مع المطور للحصول على ترخيص</a>
+        </div>
+      `;
+      window.stop();
+      return;
+    }
+
+    // 2. Site Protection Logic (Elite Protection Pack)
     const handleContextMenu = (e: MouseEvent) => e.preventDefault();
     const handleKeyDown = (e: KeyboardEvent) => {
       // Extended block list: F12, Ctrl+Shift+I, J, C, U, Ctrl+S
