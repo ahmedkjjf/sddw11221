@@ -413,6 +413,7 @@ export default function App() {
       window.location.hostname.includes('ais-dev-') || 
       window.location.hostname.includes('ais-pre-') ||
       window.location.hostname.includes('run.app') ||
+      window.location.hostname.includes('netlify.app') ||
       window.location.hostname === 'localhost';
 
     const isLocalFile = window.location.protocol === 'file:';
